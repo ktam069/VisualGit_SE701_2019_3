@@ -135,7 +135,11 @@ function getUserInfo(callback) {
     }
 
     if (!err) {
-      client = github.client(token);
+      // client = github.client(token);
+      client = github.client({
+        username: getUsernameTemp(),
+        password: getPasswordTemp()
+      });
       var ghme = client.me();
       processLogin(ghme, callback);
     }
@@ -162,6 +166,10 @@ function submitOTP(callback) {
     }
     else {
       client = github.client(token);
+      // client = github.client({
+      //   username: getUsernameTemp(),
+      //   password: getPasswordTemp()
+      // });
       var ghme = client.me();
       processLogin(ghme, callback);
     }
